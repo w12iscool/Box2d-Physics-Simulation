@@ -16,7 +16,7 @@ void Box::handleSpawning(std::vector<Box>& boxes, b2WorldId& worldId)
 		bodyDef.position = { p.m_pos.x / 30, p.m_pos.y / 30 };
 
 		p.bodyId = b2CreateBody(worldId, &bodyDef);
-		
+
 		b2Polygon dynamicBox = b2MakeBox(0.5f, 0.5f);
 		b2ShapeDef shapeDef = b2DefaultShapeDef();
 		shapeDef.density = 1.0f;
@@ -28,6 +28,13 @@ void Box::handleSpawning(std::vector<Box>& boxes, b2WorldId& worldId)
 	}
 	if (IsKeyPressed(KEY_C))
 	{
+		for (auto& square : boxes)
+		{
+			if (b2Body_IsValid(square.bodyId))
+			{
+				b2DestroyBody(square.bodyId);
+			}
+		}
 		boxes.clear();
 	}
 }
@@ -50,3 +57,4 @@ void Box::renderBoxes(std::vector<Box>& boxes, b2WorldId& worldId)
 		DrawRectanglePro(squareRec, Vector2(square.m_size / 2, square.m_size / 2), angleDegrees, RAYWHITE);
 	}
 }
+

@@ -17,6 +17,7 @@ private:
 	Box box{ Vector2(0, 0) };
 public:
 	b2WorldId worldId = {};
+	b2BodyId groundId = {};
 	void startUp(float userGrav);
 	void update();
 	void render();

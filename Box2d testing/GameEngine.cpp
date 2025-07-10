@@ -1,13 +1,19 @@
 #include "GameEngine.h"
 
 b2WorldDef worldDef = b2DefaultWorldDef();
-
+b2BodyDef groundBodyDef = b2DefaultBodyDef();
 
 void GameEngine::startUp(float userGrav)  
 {
 	b2SetLengthUnitsPerMeter(30);
 	worldDef.gravity = { 0.0f, userGrav };
 	worldId = b2CreateWorld(&worldDef);
+
+	groundBodyDef.position = { 0.0f, screenHeight / 30 };
+	groundId = b2CreateBody(worldId, &groundBodyDef);
+	b2Polygon groundBox = b2MakeBox(screenWidth / 2, 0.1);
+	b2ShapeDef groundShapeDef = b2DefaultShapeDef();
+	b2CreatePolygonShape(groundId, &groundShapeDef, &groundBox);
 }
 
 

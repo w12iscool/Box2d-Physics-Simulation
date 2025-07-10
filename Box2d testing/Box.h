@@ -11,7 +11,7 @@ class Box
 private:  
    int m_size{ 30 };  
    Vector2 m_pos{ 0 };
-   
+   bool m_isCleared{ false };
 public:
 	b2BodyId bodyId{ 0 };
 
