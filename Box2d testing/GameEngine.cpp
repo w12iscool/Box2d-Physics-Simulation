@@ -25,10 +25,18 @@ void GameEngine::update()
 	box.handleSpawning(boxes, worldId);
 }
 
-void GameEngine::render()
-{
-	ClearBackground(BLACK);
-	box.renderBoxes(boxes, worldId);
+void GameEngine::render()  
+{  
+   ClearBackground(BLACK);  
+   box.renderBoxes(boxes, worldId);  
+
+   std::string temp = std::to_string(boxes.size());
+   const char* text = temp.c_str();
+   DrawText(text, 20, 20, 20, RAYWHITE);
+
+   std::string tempFps = std::to_string(GetFPS());
+   const char* fpsText = tempFps.c_str();
+   DrawText(fpsText, 20, 50, 20, YELLOW);
 }
 
 void GameEngine::shutDown()

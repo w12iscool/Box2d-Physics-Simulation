@@ -58,3 +58,5 @@ void Box::renderBoxes(std::vector<Box>& boxes, b2WorldId& worldId)
 	}
 }
 
+
+
